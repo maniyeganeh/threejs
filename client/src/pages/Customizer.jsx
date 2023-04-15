@@ -32,12 +32,28 @@ const Customizer = () => {
       case 'filepicker':
         return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
       case 'aipicker':
-        return <AiPicker />;
+        return (
+          <AiPicker
+            prompt={prompt}
+            setPrompt={setPrompt}
+            generatingImg={generatingImg}
+            handleSubmit={handleSubmit}
+          />
+        );
       default:
         return null;
     }
   };
-
+  const handleSubmit = async (type) => {
+    if (!prompt) return alert('Please Enter a Promp');
+    try {
+    } catch (err) {
+      alert(err);
+    } finally {
+      setGeneratingImg(false);
+      setActiveEditorTab('');
+    }
+  };
   const handleDecals = (type, result) => {
     const decalType = DecalTypes[type];
 
